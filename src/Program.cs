@@ -1,6 +1,7 @@
 ﻿using CoreCodeCamp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
@@ -18,6 +19,7 @@ builder.Services.AddApiVersioning(options =>
     options.DefaultApiVersion = new ApiVersion(1, 1);
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.ReportApiVersions = true;
+    options.ApiVersionReader = new QueryStringApiVersionReader("ver");
 });
 
 
